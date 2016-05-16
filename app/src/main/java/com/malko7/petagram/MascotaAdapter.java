@@ -28,13 +28,21 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
     }
 
     @Override
-    public void onBindViewHolder(MascotaViewHolder holder, int position) {
+    public void onBindViewHolder(final MascotaViewHolder holder, int position) {
         Mascota mascota = mascotas.get(position);
         holder.imgvPet.setImageResource(mascota.getFoto());
         holder.imgvLike.setImageResource(R.drawable.btn_like);
         holder.tvPetName.setText(mascota.getNombre());
         holder.tvLikes.setText(String.valueOf(mascota.getVotos()));
         holder.imgvLikes.setImageResource(R.drawable.btn_like_counter);
+
+        holder.imgvLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int likes = Integer.parseInt(holder.tvLikes.getText().toString()) + 1;
+                holder.tvLikes.setText(String.valueOf(likes));
+            }
+        });
     }
 
     @Override

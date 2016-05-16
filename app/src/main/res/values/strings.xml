@@ -2,4 +2,6 @@
     <string name="app_name">Petagram</string>
     <string name="title_activity_favoritos">Favoritos</string>
     <string name="action_view_favoritos">Favoritos</string>
+    <string name="floating_action_button_message">Proximamente...</string>
+    <string name="snackbar_message">Acción SnackBar</string>
 </resources>

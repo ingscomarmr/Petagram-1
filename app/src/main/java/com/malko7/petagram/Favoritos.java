@@ -1,21 +1,29 @@
 package com.malko7.petagram;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class Favoritos extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favoritos);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tbMain);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        init();
     }
 
     @Override
@@ -33,5 +41,28 @@ public class Favoritos extends AppCompatActivity {
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void init() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tbMain);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        List<Mascota> mascotas = Arrays.asList(
+                new Mascota(R.drawable.pet_5, "Sansón", 15),
+                new Mascota(R.drawable.pet_4, "Chikis", 15),
+                new Mascota(R.drawable.pet_3, "Zeus", 12),
+                new Mascota(R.drawable.pet_5, "Rambo", 11),
+                new Mascota(R.drawable.pet_1, "Rocky", 10)
+        );
+
+        recyclerView = (RecyclerView) findViewById(R.id.rvMain);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new MascotaAdapter(mascotas);
+        recyclerView.setAdapter(adapter);
     }
 }

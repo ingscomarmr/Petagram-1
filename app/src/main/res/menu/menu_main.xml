@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
     <item android:id="@+id/action_favoritos" android:title="@string/action_view_favoritos"
-        android:icon="@drawable/abc_btn_rating_star_on_mtrl_alpha"
+        android:icon="@drawable/btn_favoritos"
         android:orderInCategory="100" app:showAsAction="always" />
 </menu>
